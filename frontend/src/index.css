@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #19518e;
+  --secondary-blue: #bae9ff;
+  --primary-orange: #f28801;
+  --secondary-orange: #f7f2eb;
+  --thirt-orange: #f7be75;
+  --primary-gray: #f7f2eb;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.li-hover:hover {
+  cursor: pointer;
+  color: black;
+  /* transform: scale(1.02); */
+}
+
+.button-hover:hover {
+  cursor: pointer;
+  background: #123a64;
+  box-shadow: 1px 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s linear;
+}
+
+.secondary-button-hover:hover {
+  border: var(--primary-color) 1px solid;
+}
+
+.span span {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.span strong {
+  color: rgb(78, 78, 78);
+  font-size: 14px;
+}
+
+.span p {
+  color: gray;
+  font-size: 15px;
+}
+
+.circle {
+  height: 600px;
+  width: 600px;
+  border-radius: 50% 0 0 50%;
+  background-color: var(--primary-color);
+}
+
+.input input {
+  padding: 8px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.input label {
+  color: rgb(97, 97, 97);
+}
+
+.form input,
+.form select {
+  border-radius: 50px;
+  border: 2px solid rgb(199, 199, 199);
+  padding: 8px 16px;
+  margin: 0 6px;
+  outline: none;
+}
+
+.form label {
+  color: black;
+  font-weight: 500;
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+  padding: 8px 0;
+  margin: 0 6px;
+}
+
+.form input:focus {
+  border: 2px solid var(--primary-color);
+}
