@@ -25,7 +25,7 @@ const Authenticate = () => {
   
   useEffect(() => {
     if (data) {
-      toast.success(data.message);
+      // toast.success(data.message);
       setEmail(data.email);
     }
   }, [data])

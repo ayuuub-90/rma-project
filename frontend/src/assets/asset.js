@@ -11,6 +11,7 @@ import thumbnail_Pr_Perrigaut from "./thumbnail_Pr_Perrigault.png";
 import ellipse from "./ellipse_70.svg";
 import ellipseTwo from "./ellipse_72.svg";
 import unknown_user from "./unkown_user.svg";
+import default_image from "./default_image.png";
 
 export const asset = {
   RMA_logo,
@@ -25,4 +26,5 @@ export const asset = {
   ellipse,
   ellipseTwo,
   unknown_user,
+  default_image,
 };

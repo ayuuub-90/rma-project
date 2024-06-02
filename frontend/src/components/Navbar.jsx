@@ -31,7 +31,7 @@ const Navbar = () => {
 
   useEffect(() => {
     document.documentElement.scrollTo(0, 0);
-  }, [pathname])
+  }, [pathname]);
 
   return (
     <>
@@ -101,7 +101,7 @@ const Navbar = () => {
               ""
             ) : (
               <>
-                <div className="max-xl:hidden absolute right-10 top-20 border bg-white z-10 center w-[200px] h-[100px] shadow-md flex flex-col font-medium text-lg text-gray-500">
+                <div className="max-xl:hidden absolute right-10 top-20 border bg-white z-10 center w-[200px] h-auto shadow-md flex flex-col font-medium text-lg text-gray-500">
                   <Link
                     onClick={() => setIsOpenProfile(false)}
                     to={"/profile"}
@@ -109,6 +109,26 @@ const Navbar = () => {
                   >
                     Mon profile
                   </Link>
+                  {user.admin && (
+                    <Link
+                      onClick={() => setIsOpenProfile(false)}
+                      to={"/admin"}
+                      className="w-full py-2 px-2 hover:bg-gray-100 text-primary-color cursor-pointer border-b "
+                    >
+                      Admin menu
+                    </Link>
+                  )}
+
+                  {user.pois && (
+                    <Link
+                      onClick={() => setIsOpenProfile(false)}
+                      to={"/mon-events"}
+                      className="w-full py-2 px-2 hover:bg-gray-100 text-primary-color cursor-pointer border-b "
+                    >
+                      Mon events
+                    </Link>
+                  )}
+
                   <div
                     onClick={() => {
                       setIsOpenProfile(false);
@@ -181,6 +201,24 @@ const Navbar = () => {
                       >
                         Mon profile
                       </Link>
+                      {user.admin && (
+                        <Link
+                          onClick={() => setIsOpenProfile(false)}
+                          to={"/admin"}
+                          className="w-full py-2 px-2 hover:bg-gray-100 text-primary-color cursor-pointer border-b "
+                        >
+                          Admin menu
+                        </Link>
+                      )}
+                      {user.pois && (
+                        <Link
+                          onClick={() => setIsOpenProfile(false)}
+                          to={"/mon-events"}
+                          className="w-full py-2 px-2 hover:bg-gray-100 text-primary-color cursor-pointer border-b "
+                        >
+                          Mon events
+                        </Link>
+                      )}
                       <div
                         onClick={() => {
                           setIsOpenProfile(false);

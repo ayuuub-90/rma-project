@@ -5,3 +5,4 @@ export const COUNTRIES_URL = "/api/countries";
 export const TAGS_URL = "/api/tags";
 export const POIS_URL = "/api/person-of-interest";
 export const EVENTS_URL = "/api/events";
+export const UPLOAD_URL = "/api/upload";

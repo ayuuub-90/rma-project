@@ -1,5 +1,5 @@
 import { apiSlice } from "./apiSlice";
-import { EVENTS_URL } from "../constants";
+import { EVENTS_URL, UPLOAD_URL } from "../constants";
 
 const eventApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -26,10 +26,10 @@ const eventApiSlice = apiSlice.injectEndpoints({
 
     // get judt three event fot the homepage
     getEventsFiltered: builder.query({
-      query: ({checkedTags, checkedPois}) => ({
+      query: ({ checkedTags, checkedPois }) => ({
         url: `${EVENTS_URL}/filtered-events`,
         method: "POST",
-        body: {checkedTags, checkedPois},
+        body: { checkedTags, checkedPois },
       }),
     }),
 
@@ -37,6 +37,42 @@ const eventApiSlice = apiSlice.injectEndpoints({
     getEventById: builder.query({
       query: (id) => ({
         url: `${EVENTS_URL}/${id}`,
+      }),
+    }),
+
+    // delete event by id
+    deleteEvent: builder.mutation({
+      query: (data) => ({
+        url: EVENTS_URL,
+        method: "DELETE",
+        body: data,
+      }),
+    }),
+
+    //! add the event image
+    uploadImageEvent: builder.mutation({
+      query: (data) => ({
+        url: `${UPLOAD_URL}/event`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    // create event api
+    createEvent: builder.mutation({
+      query: (data) => ({
+        url: EVENTS_URL,
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    // get user events api
+    getUserEvents: builder.query({
+      query: (data) => ({
+        url: `${EVENTS_URL}/user-events`,
+        method: "POST",
+        body: data,
       }),
     }),
   }),
@@ -48,4 +84,8 @@ export const {
   useGetAllEventsComingQuery,
   useGetThreeEventsQuery,
   useGetEventsFilteredQuery,
+  useDeleteEventMutation,
+  useUploadImageEventMutation,
+  useCreateEventMutation,
+  useGetUserEventsQuery,
 } = eventApiSlice;

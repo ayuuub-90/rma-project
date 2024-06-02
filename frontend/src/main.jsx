@@ -21,8 +21,13 @@ import Profile from "./pages/auth/Profile.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import EventDetails from "./pages/events/EventDetails.jsx";
 import Event from "./pages/events/Event.jsx";
+import MyEventsRoute from "./pages/events/user_events/MyEventsRoute.jsx";
 import Error404 from "./pages/Error404.jsx";
-import Test from "./pages/Test.jsx";
+import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
+import ChangePassword from "./pages/auth/ChangePassword.jsx";
+import Integrate from "./pages/auth/Integrate.jsx";
+import AdminRoute from "./pages/admin/AdminRoute.jsx";
+import AdminMenu from "./pages/admin/AdminMenu.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,16 +36,22 @@ const router = createBrowserRouter(
       <Route path="/contact" element={<Contact />} />
       <Route path="/agenda" element={<EventComingPage />} />
       <Route path="/replays" element={<EventReplays />} />
-      <Route path="/complete-registration/:token" element={<Authenticate />} />
-      
-      {/* <Route path="/complete-registration/:token" element={<Authenticate />} /> */}
 
-      <Route path="/test" element={<Test />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/forgot-password/:token" element={<ChangePassword />} />
+
+      <Route path="/complete-registration/:token" element={<Authenticate />} />
 
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<Profile />} />
+        <Route path="/integrate" element={<Integrate />} />
+        <Route path="/mon-events" element={<MyEventsRoute />} />
         <Route path="/event/:id" element={<EventDetails />} />
         <Route path="/event/:id/replay" element={<Event />} />
+      </Route>
+
+      <Route path="/admin" element={<AdminRoute />}>
+        <Route path="" element={<AdminMenu />} />
       </Route>
 
       {/* default path */}

@@ -3,6 +3,7 @@ import { useLoginUserMutation } from "../../redux/api/userApiSLice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { setCredintials } from "../../redux/features/auth/authSlice";
 
 const LoginPage = () => {
@@ -17,7 +18,21 @@ const LoginPage = () => {
     try {
       const res = await loginUser({ email, password }).unwrap();
       dispatch(
-        setCredintials({ _id: res._id, nom: res.nom, prenom: res.prenom })
+        setCredintials({
+          _id: res._id,
+          nom: res.nom,
+          prenom: res.prenom,
+          email: res.email,
+          titre: res.titre,
+          profession: res.profession,
+          specialite: res.specialite,
+          num_RPPS: res.num_RPPS,
+          pays_exercice: res.pays_exercice,
+          etablissement_exercice: res.etablissement_exercice,
+          admin: res.admin,
+          pois: res.pois,
+          image: res.image,
+        })
       );
       navigate("/");
     } catch (error) {
@@ -74,9 +89,12 @@ const LoginPage = () => {
       >
         <span className="text-xl font-bold">Se connecter</span>
       </button>
-      <a className="center font-semibold tracking-wide underline">
+      <Link
+        to={"/forgot-password"}
+        className="center font-semibold tracking-wide underline"
+      >
         Mot de passe oublie?
-      </a>
+      </Link>
     </div>
   );
 };

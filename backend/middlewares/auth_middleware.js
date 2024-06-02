@@ -17,4 +17,14 @@ const authenticate = asyncHandler(async (req, res, next) => {
   }
 });
 
-export { authenticate };
+const authorizeAdmin = asyncHandler(async (req, res, next) => {
+  try {
+    if (req.user && req.user.admin) {
+      next();
+    }
+  } catch (error) {
+    return res.status(401).json({ message: "Not authorize as admin!" });
+  }
+});
+
+export { authenticate, authorizeAdmin };

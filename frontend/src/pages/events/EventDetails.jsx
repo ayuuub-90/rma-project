@@ -7,6 +7,10 @@ const EventDetails = () => {
   const params = useParams();
   const { data: event } = useGetEventByIdQuery(params.id);
 
+  const date_begin = new Date(event?.startDate);
+  const date_end = new Date(event?.stopDate);
+
+
   return (
     <>
       <Cover />
@@ -20,7 +24,22 @@ const EventDetails = () => {
             />
             <div className="w-1/2 max-md:w-full p-4 flex flex-col gap-5">
               <p className="text-primary-color text-2xl font-mono">
-                <strong>30 janv. 2024</strong> 19:00 à 20:30
+                <strong>{date_begin.toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}</strong>{" "}
+                {date_begin.toLocaleTimeString("en-US", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                })}
+                {" à "}
+                {date_end.toLocaleTimeString("en-US", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                })}
               </p>
               <strong className="text-3xl text-gray-800">{event?.title}</strong>
             </div>
@@ -49,12 +68,12 @@ const EventDetails = () => {
                   <div key={person._id} className="mb-10">
                     <img
                       src={person.image}
-                      alt={person?.image}
+                      alt={person.image}
                       className="rounded-full border-b-8 border-secondary-blue "
                     />
                     <p className="text-primary-orange text-xl text-center font-medium pt-2 max-w-[170px] max-md:text-sm ">
-                      {person.civility} {person.lastname} <br />
-                      <span className="">{person.firstname.toUpperCase()}</span>
+                      {person.titre} {person.nom} <br />
+                      <span className="">{person.prenom.toUpperCase()}</span>
                     </p>
                   </div>
                 ))}
@@ -67,13 +86,22 @@ const EventDetails = () => {
       <div className="w-full py-9 mb-16 bg-secondary-blue center relative overflow-hidden">
         <div className="w-[700px] h-1/2 ">
           <p className="text-primary-color text-2xl pb-4 px-2">Programme:</p>
-          <div className="px-10 max-md:px-2 max-sm:flex max-sm:flex-col">
+          <div className="px-10 max-md:px-2 flex max-sm:flex-col">
             <span className="text-primary-orange font-mono text-xl px-2 ">
-              09:00
+              {date_begin.toLocaleTimeString("en-US", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+              })}
             </span>
+            <div className="flex flex-col">
             <span className="font-medium text-xl px-2">
-              Comprendre les enjeux de la fin de vie
+              {event?.title}
             </span>
+            <span className="px-2 text-gray-600">
+              {event?.description}
+            </span>
+            </div>
           </div>
         </div>
         <div className="absolute rounded-full bg-thirt-orange size-24 -top-11 left-44 max-lg:hidden"></div>

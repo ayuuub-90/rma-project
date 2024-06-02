@@ -3,7 +3,9 @@ import { GoArrowLeft } from "react-icons/go";
 
 const Error404 = () => {
   return (
-    <div className="w-full h-[80vh] center flex-col gap-8">
+    <>
+    <hr />
+      <div className="w-full h-[80vh] center flex-col gap-8">
       <p className="text-7xl font-light tracking-wide">
         Oups, Page not found 404 :{"("}{" "}
       </p>
@@ -12,6 +14,7 @@ const Error404 = () => {
         <p>Go Back Home</p>
       </Link>
     </div>
+    </>
   );
 };
 

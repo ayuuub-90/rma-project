@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { useUpdateUserMutation } from "../../redux/api/userApiSLice";
 import { useDispatch } from "react-redux";
 import { setCredintials } from "../../redux/features/auth/authSlice";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const { data: userInfo, isLoading } = useGetUserByIdQuery();
@@ -55,7 +56,7 @@ const Profile = () => {
         email: email,
         titre,
         nom,
-        prenom, 
+        prenom,
         profession,
         specialite,
         mode_exercice,
@@ -67,7 +68,21 @@ const Profile = () => {
         confirmPassword,
       }).unwrap();
       dispatch(
-        setCredintials({ _id: res._id, nom: res.nom, prenom: res.prenom })
+        setCredintials({
+          _id: res._id,
+          nom: res.nom,
+          prenom: res.prenom,
+          email: res.email,
+          titre: res.titre,
+          profession: res.profession,
+          specialite: res.specialite,
+          num_RPPS: res.num_RPPS,
+          pays_exercice: res.pays_exercice,
+          etablissement_exercice: res.etablissement_exercice,
+          admin: res.admin,
+          pois: res.pois,
+          image: res.image,
+        })
       );
       return toast.success("user updated successfully");
     } catch (error) {
@@ -82,18 +97,15 @@ const Profile = () => {
       </>
     );
   }
-  
+
   return (
     <>
       <Cover />
       <div className="center w-full ">
         <div className="w-1/2 py-4 form max-lg:w-full max-lg:px-4">
-          <h1 className="text-3xl text-primary-color">
-            Finalisez votre inscription
-          </h1>
-          <div className="border-b border-primary-orange border-dashed py-4 my-2 ">
+          <div className="border-b border-primary-orange border-dashed pb-4 mb-2 ">
             <h1 className="text-primary-orange text-xl font-medium tracking-wide">
-              Informations
+              Informations email
             </h1>
           </div>
 
@@ -134,7 +146,7 @@ const Profile = () => {
 
           <div className="border-b border-primary-orange border-dashed py-4 my-2 ">
             <h1 className="text-primary-orange text-xl font-medium tracking-wide">
-              Informations
+              Autre informations
             </h1>
           </div>
 
@@ -267,19 +279,23 @@ const Profile = () => {
           </p>
 
           <p className="text-gray-500 py-3 text-lg">
-            Le dépôt et la lecture de cookies afin d’analyser
-            votre navigation et nous permettre de mesurer l’audience de notre
-            site internet:
+            Le dépôt et la lecture de cookies afin d’analyser votre navigation
+            et nous permettre de mesurer l’audience de notre site internet:
           </p>
-          
 
-          <div className="my-4">
-            <button
+          <div className="my-4 flex max-md:flex-col w-full gap-2">
+            <div
               onClick={handleUpdate}
-              className="button-hover bg-primary-color text-white font-medium text-lg rounded-full px-4 py-2 "
+              className="button-hover bg-primary-color text-white font-medium text-lg rounded-full px-4 py-2 w-1/4 max-lg:w-full center max-xl:text-sm"
             >
               Editer mon profile
-            </button>
+            </div>
+            <Link
+              to={"/integrate"}
+              className="bg-white font-bold text-lg rounded-full px-4 py-2 text-primary-color border-[2px] border-primary-color secondary-button-hover w-3/4 max-lg:w-full center max-xl:text-sm"
+            >
+              Ajouter votre propre events
+            </Link>
           </div>
         </div>
       </div>

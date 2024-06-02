@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema(
   {
     email: { type: String, required: true },
-    // admin: { type: Boolean, required: true, default: false },
     password: { type: String, required: true },
     titre: { type: String, required: true },
     nom: { type: String, required: true },
@@ -20,6 +19,10 @@ const userSchema = new mongoose.Schema(
 
     //! variable to be used when the user verified his email address
     verified: { type: Boolean, required: true, default: false },
+    admin: { type: Boolean, required: true, default: false },
+    
+    pois: { type: Boolean, required: true, default: false },
+    image: { type: String, default: "/uploads/personOfInterests/unkown_user.svg"},
   },
   {
     timestamps: true,

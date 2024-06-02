@@ -31,18 +31,20 @@ const EventCard = ({ event }) => {
           {date_begin.toLocaleTimeString("en-US", {
             hour: "2-digit",
             minute: "2-digit",
+            hour12: false,
           })}
           {" à "}
           {date_end.toLocaleTimeString("en-US", {
             hour: "2-digit",
             minute: "2-digit",
+            hour12: false,
           })}
         </span>
 
-        <p className="text-gray-500 text-lg py-2">
+        <p className="text-gray-600 text-xl py-2">
           {event.personOfInterests.map((pois) => (
             <span key={pois._id}>
-              {pois.civility} {pois.firstname} {pois.lastname},{" "}
+              {pois.titre} {pois.nom} {pois.prenom}{" "}
             </span>
           ))}
         </p>

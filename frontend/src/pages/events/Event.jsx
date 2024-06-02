@@ -27,11 +27,13 @@ const Event = () => {
               {date_begin.toLocaleTimeString("en-US", {
                 hour: "2-digit",
                 minute: "2-digit",
+                hour12: false,
               })}
               {" à "}
               {date_end.toLocaleTimeString("en-US", {
                 hour: "2-digit",
                 minute: "2-digit",
+                hour12: false,
               })}
             </p>
             <p className="font-bold text-[22px]  max-md:text-md">

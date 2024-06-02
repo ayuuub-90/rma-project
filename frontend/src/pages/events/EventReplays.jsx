@@ -9,7 +9,7 @@ import { IoMdClose } from "react-icons/io";
 import Loading from "../../components/Loading";
 import { useGetEventsFilteredQuery } from "../../redux/api/eventApiSlice.js";
 import { useGetAllTagsQuery } from "../../redux/api/tagApiSlice.js";
-import { useGetAllPoisQuery } from "../../redux/api/personOfInterestApiSlice.js";
+import { useGetAllPoisQuery } from "../../redux/api/userApiSLice.js";
 
 const EventReplays = () => {
   const { data: tags } = useGetAllTagsQuery();
@@ -150,7 +150,7 @@ const EventReplays = () => {
                           }
                         />
                         <label htmlFor={person._id}>
-                          {person.civility} {person.firstname} {person.lastname}
+                          {person.titre} {person.nom} {person.prenom}
                         </label>
                       </div>
                     ))}
@@ -231,7 +231,7 @@ const EventReplays = () => {
                     }
                   />
                   <label htmlFor={person._id}>
-                    {person.civility} {person.firstname} {person.lastname}
+                    {person.titre} {person.nom} {person.prenom}
                   </label>
                 </div>
               ))}
