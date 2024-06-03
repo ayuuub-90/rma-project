@@ -3,10 +3,12 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AddEvent from "./AddEvent";
 import EventsList from "./EventsList";
+import { IoIosMenu } from "react-icons/io";
 
 const MyEventsRoute = () => {
   const { user } = useSelector((state) => state.auth);
   const [page, setPage] = useState(1);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
@@ -35,29 +37,74 @@ const MyEventsRoute = () => {
             </div>
           </div>
           {/* events options left and bottom side */}
-            <div className="h-full bg-gray-50 text-lg max-xl:hidden">
-              <div
-                className={`hover:bg-white cursor-pointer w-full h-10 flex items-center px-4 ${
-                  page === 1 && "bg-white"
-                } `}
-                onClick={() => setPage(1)}
-              >
-                mes events
-              </div>
-              <div
-                className={`hover:bg-white cursor-pointer w-full h-10 flex items-center px-4 ${
-                  page === 2 && "bg-white"
-                } `}
-                onClick={() => setPage(2)}
-              >
-                ajouter un event
-              </div>
+          <div className="h-full bg-gray-50 text-lg max-xl:hidden">
+            <div
+              className={`hover:bg-white cursor-pointer w-full h-10 flex items-center px-4 ${
+                page === 1 && "bg-white"
+              } `}
+              onClick={() => setPage(1)}
+            >
+              mes events
             </div>
+            <div
+              className={`hover:bg-white cursor-pointer w-full h-10 flex items-center px-4 ${
+                page === 2 && "bg-white"
+              } `}
+              onClick={() => setPage(2)}
+            >
+              ajouter un event
+            </div>
+          </div>
         </div>
 
-        <div className="w-5/6 max-xl:w-full h-full ">
-            {page === 1 && <EventsList />}
-            {page === 2 && <AddEvent />}
+        <div className="w-5/6 max-xl:w-full h-full relative">
+          <div
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="absolute right-4 top-5 hidden max-xl:block cursor-pointer"
+          >
+            <IoIosMenu className="size-6" />
+          </div>
+
+          {menuOpen && (
+            <>
+              <div
+                className="bg-white/50 fixed top-0 left-0 w-1/2 h-full"
+                onClick={() => setMenuOpen(false)}
+              ></div>
+              <div className="bg-white border w-1/2 h-full fixed top-0 right-0 flex flex-col text-black shadow-xl">
+                <div className="h-[88px] flex items-center px-6 text-xl font-medium">
+                  Gestion évents
+                </div>
+                <ul className="flex flex-col text-lg">
+                  <div
+                    className={`hover:bg-gray-50 cursor-pointer w-full h-10 flex items-center px-4 border-y ${
+                      page === 1 && "bg-white"
+                    } `}
+                    onClick={() => {
+                      setPage(1);
+                      setMenuOpen(false);
+                    }}
+                  >
+                    mes events
+                  </div>
+                  <div
+                    className={`hover:bg-gray-50 cursor-pointer w-full h-10 flex items-center px-4 border-b ${
+                      page === 2 && "bg-white"
+                    } `}
+                    onClick={() => {
+                      setPage(2);
+                      setMenuOpen(false);
+                    }}
+                  >
+                    ajouter un event
+                  </div>
+                </ul>
+              </div>
+            </>
+          )}
+
+          {page === 1 && <EventsList />}
+          {page === 2 && <AddEvent />}
         </div>
       </div>
     </>

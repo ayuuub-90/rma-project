@@ -54,7 +54,7 @@ const AdminMenu = () => {
                 className="bg-white/50 fixed top-0 left-0 w-2/3 h-full"
                 onClick={() => setMenuOpen(false)}
               ></div>
-              <div className="bg-white border w-1/3 h-full fixed top-0 right-0 flex flex-col text-black ">
+              <div className="bg-white border shadow-xl w-1/3 h-full fixed top-0 right-0 flex flex-col text-black ">
                 <div className="h-[88px] flex items-center px-6 text-xl font-medium">
                   Admin menu
                 </div>

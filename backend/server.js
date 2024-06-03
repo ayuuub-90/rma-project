@@ -23,7 +23,6 @@ import userRouter from "./routes/userRoute.js";
 import contactRouter from "./routes/contactRoute.js";
 import countryRouter from "./routes/countryRoute.js";
 import tagRouter from "./routes/tagRoute.js";
-import poisRouter from "./routes/personOfInterestsRoute.js";
 import eventRouter from "./routes/eventRoute.js";
 import uploadRouter from "./routes/imageUploadRoute.js";
 
@@ -31,7 +30,6 @@ app.use("/api/users", userRouter);
 app.use("/api/contacts", contactRouter);
 app.use("/api/countries", countryRouter);
 app.use("/api/tags", tagRouter);
-app.use("/api/person-of-interest", poisRouter);
 app.use("/api/events", eventRouter);
 app.use("/api/upload", uploadRouter);
 
